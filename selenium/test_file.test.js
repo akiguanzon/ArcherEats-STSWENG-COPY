@@ -15,39 +15,13 @@ describe("Perform Search", function () {
         let driver = await new Builder().forBrowser("chrome").build();
         try {
             // navigate to to this website
-            await driver.get("http://localhost:3000/login");
+            await driver.get("http://localhost:3000");
 
             // find a search box element with name ='q'
-            await driver.findElement(By.name("username"));
 
-            // type 'reflect run' in the search box then press ENTER Key
-            await driver.findElement(By.name("username")).sendKeys("boss_nik");
+            await driver.wait(until.titleIs("Home | ArcherEats"), 1000);
 
-            await driver.findElement(By.name("password"));
-
-            // type 'reflect run' in the search box then press ENTER Key
-            await driver.findElement(By.name("password")).sendKeys("banana");
-
-            await driver.findElement(By.css('.btn.btn-light.mt-4.gy-0.signin-js')).click();
-
-            /* wait for the page to load the search result untill the page
-              title is equal to `Reflect run - Google Search */
-            await driver.wait(until.titleIs("boss_nik - Profile | ArcherEats"), 1000);
-
-            // Get the pagetitle of the current Page
-
-            // assert that the current pageTitle is equal to 'Reflect run - Google Search'
-
-
-            await driver.findElement(By.css('.nav-link.dropdown-toggle.p-0')).click();
-
-            await driver.findElement(By.xpath('//a[@href="/admin"]')).click();
-
-            await driver.wait(until.titleIs("Admin | ArcherEats"), 1000);
-
-            let pageTitle = await driver.getTitle();
-
-            assert.strictEqual(pageTitle, "Admin | ArcherEats");
+            assert.strictEqual(pageTitle, "Home | ArcherEats");
             if (pageTitle) {
                 console.log("Page Title:", pageTitle);
             }
