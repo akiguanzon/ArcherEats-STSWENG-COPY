@@ -1,7 +1,5 @@
 // import chromedriver so that selenium can by itself open a chrome driver
 
-require("chromedriver");
-
 // import this classes from selenium
 const { Builder, By, Key, until } = require("selenium-webdriver");
 
